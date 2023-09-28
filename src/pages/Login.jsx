@@ -1,8 +1,66 @@
+import {
+  Box,
+  Button,
+  Card,
+  Divider,
+  Grid,
+  TextField,
+  Typography,
+} from "@mui/material";
 
-const Login = () =>{
-    return(
-        <div>Login</div>
-    )
-}
+import { NavLink } from "react-router-dom";
 
-export default Login
+const handleLogin = () => {
+  console.log("test");
+};
+
+const Login = () => {
+  return (
+    <Card sx={{ width: 500, height: "50vh" }}>
+      <Box
+        component="form"
+        borderRadius="lg"
+        coloredShadow="info"
+        pt={5}
+        pb={5}
+        px={5}
+        textAlign="center"
+        noValidate
+        autoComplete="off"
+      >
+        <Typography variant="h5" component="div">
+          Welcome
+        </Typography>
+        <br />
+        <Box mb={2}>
+          <TextField
+            id="outlined-basic"
+            label="Email"
+            variant="outlined"
+            fullWidth
+          />
+        </Box>
+        <Box mb={2}>
+          <TextField
+            id="outlined-password-input"
+            label="Password"
+            type="password"
+            fullWidth
+          />
+        </Box>
+
+        <Box mt={4} mb={1}>
+          <Button variant="contained" onClick={handleLogin} fullWidth>
+            Log in
+          </Button>
+        </Box>
+      </Box>
+      <Divider variant="middle" />
+      <p className="text-sm text-white text-center">
+        No account yet? <NavLink to="/signup">Sign up</NavLink>
+      </p>
+    </Card>
+  );
+};
+
+export default Login;
