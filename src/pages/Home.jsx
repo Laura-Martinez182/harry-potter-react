@@ -6,7 +6,7 @@ const Home = () => {
   return (
     <>
       <NavBar />
-      <Grid container columnSpacing={6}>
+      <Grid  container justifyContent="center" columnSpacing={6} marginTop={25} display="flex">
         <Grid item>
           <CardComponent
             img="/src/assets/test.jpg"
