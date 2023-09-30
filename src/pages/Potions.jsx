@@ -1,8 +1,13 @@
+import NavBar from "../components/navigation/NavBar";
+
 
 const Potions = () =>{
+    const screenName = "Potions"
     return(
-        <div>Potions</div>
+        <div>
+            <NavBar pageName = {screenName}/>
+        </div>
     )
 }
 
-export default Potions
+export default Potions;
