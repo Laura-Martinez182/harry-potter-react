@@ -9,31 +9,38 @@ import AccountCircle from '@mui/icons-material/AccountCircle';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
 import SideMenu from './SideMenu';
+import { useNavigate } from "react-router-dom";
 
 const NavBar = ({pageName}) =>{
   const [anchorEl, setAnchorEl] = React.useState(null);
-  const [isDrawerOpen, setIsDrawerOpen] = React.useState(true);
+  const [isDrawerOpen, setIsDrawerOpen] = React.useState(false);
+  const [isUserLogged, setIsUserLogged] = React.useState(false);
 
-  const toggleDrawer = (isOpen) => {
-    setIsDrawerOpen(isOpen)    
-  };
+  const navigate = useNavigate()
+  const navigateToUrl = (url) => {navigate(url);}
 
-  const handleMenu = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
+  const toggleDrawer = (isOpen) => setIsDrawerOpen(isOpen);
 
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
+  const handleMenu = (event) => setAnchorEl(event.currentTarget);
+
+  const handleClose = () => setAnchorEl(null);
 
   const handleLogOut = () => {
-    handleClose()    
+    handleClose()
+    setIsUserLogged(false)    
     console.log("Handle LogOut")
+  }
+
+  const handleLogIn = () => {
+    handleClose()  
+    setIsUserLogged(true)
+    navigateToUrl("/login")  
+    console.log("Handle LogIn")
   }
 
   return (
     <nav>
-    <SideMenu isDrawerOpen={isDrawerOpen} toggleDrawer={toggleDrawer}/>
+    <SideMenu isDrawerOpen={isDrawerOpen} toggleDrawer={toggleDrawer} handleClick={navigateToUrl}/>
     <Box sx={{ flexGrow: 1}}>
       <AppBar position="static" color='primary'>
         <Toolbar>
@@ -69,7 +76,8 @@ const NavBar = ({pageName}) =>{
                 open={Boolean(anchorEl)}
                 onClose={handleClose}
               >
-                <MenuItem onClick={handleLogOut}>Log out</MenuItem>
+                {isUserLogged && (<MenuItem onClick={() => handleLogOut()}>Log out</MenuItem>)}
+                {!isUserLogged && (<MenuItem onClick={() => handleLogIn()}>Log In</MenuItem>)}
               </Menu>
             </div>          
         </Toolbar>
@@ -78,7 +86,6 @@ const NavBar = ({pageName}) =>{
     </nav>
   );
 }
-
 
 NavBar.defaultProps = {
     pageName: "Home"
