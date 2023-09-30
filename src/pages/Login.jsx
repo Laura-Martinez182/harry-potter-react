@@ -3,7 +3,6 @@ import {
   Button,
   Card,
   Divider,
-  Grid,
   TextField,
   Typography,
 } from "@mui/material";
@@ -16,7 +15,7 @@ const handleLogin = () => {
 
 const Login = () => {
   return (
-    <Card sx={{ width: 500, height: "50vh" }}>
+    <Card sx={{ width: 500, height: 430, boxShadow: 2 }}>
       <Box
         component="form"
         borderRadius="lg"
@@ -48,17 +47,19 @@ const Login = () => {
             fullWidth
           />
         </Box>
-
         <Box mt={4} mb={1}>
           <Button variant="contained" onClick={handleLogin} fullWidth>
             Log in
           </Button>
+          <p className="text-sm text-white text-center">
+            <NavLink to="/signup">Continue as Guest</NavLink>
+          </p>
         </Box>
+        <Divider variant="middle" />
+        <p className="text-sm text-white text-center">
+          No account yet? <NavLink to="/signup">Sign up</NavLink>
+        </p> 
       </Box>
-      <Divider variant="middle" />
-      <p className="text-sm text-white text-center">
-        No account yet? <NavLink to="/signup">Sign up</NavLink>
-      </p>
     </Card>
   );
 };

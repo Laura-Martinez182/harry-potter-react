@@ -1,10 +1,21 @@
 import { Grid } from "@mui/material";
+import CardComponent from "../components/Card";
 
 const Home = () => {
   return (
-    <Grid sx={{ flexGrow: 1 }} container spacing={2}>
-      <Grid item xs={12}>
-        <Grid container justifyContent="center" spacing={8}></Grid>
+    <Grid container columnSpacing={6}>
+      <Grid item>
+        <CardComponent
+          img="/src/assets/test.jpg"
+          title="Characters"
+          content="Testing"
+        />
+      </Grid>
+      <Grid item>
+        <CardComponent img="/src/assets/test.jpg" title="Movies" content="Testing" />
+      </Grid>
+      <Grid item>
+        <CardComponent img="/src/assets/test.jpg" title="Potions" content="Testing" />
       </Grid>
     </Grid>
   );
