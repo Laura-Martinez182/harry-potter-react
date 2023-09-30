@@ -16,10 +16,8 @@ const Router = () => (
             <Route path="/characters" element={<Characters/>}/>
             <Route path="/movies" element={<Movies/>}/>
             <Route path="/potions" element={<Potions/>}/>
-
         </Routes>
     </BrowserRouter>
-)
-    
+)    
 
 export default Router

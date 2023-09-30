@@ -1,7 +1,13 @@
+import NavBar from "../components/navigation/NavBar"
 
 const Movies = () =>{
+
+    const screenName = "Movies"
+
     return(
-        <div>Movies</div>
+        <div>
+            <NavBar pageName = {screenName}/>
+        </div>
     )
 }
 

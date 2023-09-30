@@ -1,8 +1,13 @@
+import NavBar from "../components/navigation/NavBar";
+
 
 const Characters = () =>{
+    const screenName = "Characters"
     return(
-        <div>Characters</div>
+        <div>
+            <NavBar pageName = {screenName}/>
+        </div>
     )
 }
 
-export default Characters
+export default Characters;
