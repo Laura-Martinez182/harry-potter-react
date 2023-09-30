@@ -6,6 +6,7 @@ import {
   Grid,
   TextField,
   Typography,
+  autocompleteClasses,
 } from "@mui/material";
 
 import { NavLink } from "react-router-dom";
@@ -16,7 +17,7 @@ const handleLogin = () => {
 
 const Login = () => {
   return (
-    <Card sx={{ width: 500, height: "50vh" }}>
+    <Card sx={{ width: 500, height: "50vh", margin:"12.5% auto"}}>
       <Box
         component="form"
         borderRadius="lg"
