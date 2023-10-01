@@ -45,3 +45,9 @@ nav{
   align-items: flex-start;
 }
 
+.CharacterImageContainer{
+  display: flex;
+  align-items: center;
+  margin:1%
+}
+
