@@ -14,7 +14,7 @@ const CardComponent = ({ img, title, content, to }) => {
     <Link to={to}>
       <Card sx={{ width: 350 }}>
         <CardActionArea>
-          <CardMedia component="img" height="150" image={img} />
+          <CardMedia component="img" height="250" image={img} />
           <CardContent>
             <Typography gutterBottom variant="h5" component="div">
               {title}

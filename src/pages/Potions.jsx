@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 
 const Potions = () => {
   const [getRows, setRows] = React.useState([
-    { id: "test", title: "This a title" },
+    { id: "test", name: "This a name" },
   ]);
   const screenName = "Potions";
   const navigate = useNavigate();
@@ -17,10 +17,8 @@ const Potions = () => {
   const columns = [
     { field: "name", headerName: "Name", flex: 0.7, headerAlign: 'center' },
     { field: "characteristics", headerName: "Characteristics", flex: 0.7, headerAlign: 'center' },
-    { field: "time", headerName: "Time", flex: 0.7, headerAlign: 'center'},
     { field: "difficulty", headerName: "Difficulty", flex: 0.7, headerAlign: 'center'},
     { field: "effect", headerName: "Effect", flex: 0.7, headerAlign: 'center'},
-    { field: "inventors", headerName: "Inventors", flex: 0.7, headerAlign: 'center'},
     { field: "ingredients", headerName: "Ingredients", flex: 0.7, headerAlign: 'center'},
   ];
 
@@ -44,7 +42,7 @@ const Potions = () => {
   };
 
   React.useEffect(() => {
-    //getPotions()
+    getPotions()
     console.log("Loaded potions");
   });
 

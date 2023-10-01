@@ -29,7 +29,7 @@ const SignUp = () => {
         navigate("/login");
       })
       .catch((error) => {
-        alert("Error creating the account. " + error.message);
+        alert("Error creating the account.");
         const errorCode = error.code;
         const errorMessage = error.message;
         console.log(errorCode, errorMessage);
