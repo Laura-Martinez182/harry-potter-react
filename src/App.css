@@ -5,3 +5,33 @@
   height: 100%;
   width: 100%;  
 }
+
+.MainContainer{
+  height: 100%;
+  width: 100%;
+  line-height: 0px;
+}
+
+nav{
+  height: 6%;
+}
+
+.PageContentContainer{
+  height: 94%;
+}
+
+.TableTitleContainer{
+  display: flex;
+  height: 6%;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.TableContainer{
+  height: 92%;
+  width: 70%;
+  background-color: white;
+  margin: auto;
+}
+
