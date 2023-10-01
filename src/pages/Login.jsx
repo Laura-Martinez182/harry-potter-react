@@ -4,8 +4,7 @@ import {
   Card,
   Divider,
   TextField,
-  Typography,
-  autocompleteClasses,
+  Typography
 } from "@mui/material";
 
 import { NavLink } from "react-router-dom";
@@ -16,7 +15,7 @@ const handleLogin = () => {
 
 const Login = () => {
   return (
-    <Card sx={{ width: 500, height: 430, boxShadow:2, margin:"12.5% auto"}}>
+    <Card sx={{ width: 500, height: 400, boxShadow:2, margin:"12.5% auto"}}>
       <Box
         component="form"
         borderRadius="lg"
@@ -52,9 +51,6 @@ const Login = () => {
           <Button variant="contained" onClick={handleLogin} fullWidth>
             Log in
           </Button>
-          <p className="text-sm text-white text-center">
-            <NavLink to="/signup">Continue as Guest</NavLink>
-          </p>
         </Box>
         <Divider variant="middle" />
         <p className="text-sm text-white text-center">

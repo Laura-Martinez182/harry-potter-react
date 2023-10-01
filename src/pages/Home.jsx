@@ -12,6 +12,7 @@ const Home = () => {
             img="/src/assets/test.jpg"
             title="Characters"
             content="Testing"
+            to="/characters"
           />
         </Grid>
         <Grid item>
@@ -19,6 +20,7 @@ const Home = () => {
             img="/src/assets/test.jpg"
             title="Movies"
             content="Testing"
+            to="/movies"
           />
         </Grid>
         <Grid item>
@@ -26,6 +28,7 @@ const Home = () => {
             img="/src/assets/test.jpg"
             title="Potions"
             content="Testing"
+            to="/potions"
           />
         </Grid>
       </Grid>
