@@ -12,15 +12,14 @@ export default function DetailDataContainer({object}) {
   const renderRows = () => {
     const headers = Object.keys(object);
     
-    const rowsComponent = headers.map((header) => {
-
+    const rowsComponent = headers.map((header,index) => {
       //Prevents error when a component has an object as child
       if (typeof object[header] === 'object' && !(object[header] instanceof Array)){
-        return (<></>)
+        return (<TableRow key={index}></TableRow>)
       }
 
       return(
-      <TableRow>
+      <TableRow key={index}>
         <TableCell>{header}</TableCell>
         <TableCell>{object[header]}</TableCell>
       </TableRow>)

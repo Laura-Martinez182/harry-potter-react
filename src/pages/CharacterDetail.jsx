@@ -1,7 +1,6 @@
-import { useParams } from "react-router";
 import NavBar from "../components/navigation/NavBar";
 import Button from '@mui/material/Button';
-import { useNavigate } from "react-router";
+import { useNavigate, useParams} from "react-router";
 import DetailDataContainer from "../components/detail/DetailDataContainer";
 import React from "react";
 import axiosInstance from "../config/axios";
@@ -10,15 +9,12 @@ import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 import { styled } from '@mui/material/styles';
 import { storage } from "../auth/firebase";
 import { database } from "../auth/firebase";
-import { toast } from 'react-toastify';
-
-import {
-    getDownloadURL,
-    ref as refStorage,
-    uploadBytes,
-  } from "firebase/storage";
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { logout, selectPerson } from "../redux/reducers/PersonSlice";
+import { getDownloadURL, ref as refStorage,uploadBytes} from "firebase/storage";
 import { getDatabase, ref as refDB, set as setDB, onValue } from "firebase/database";
+import { useSelector } from "react-redux";
 
 const CharacterDetail = () =>{
 
@@ -27,6 +23,7 @@ const CharacterDetail = () =>{
 
     let {id} = useParams()
     const screenName = "Character Detail"
+    const user = useSelector(selectPerson);
 
     const navigate = useNavigate()
     const navigateToUrl = (url) =>{
@@ -38,9 +35,9 @@ const CharacterDetail = () =>{
     }
     
     const getCharacter = async () => {
-
+        let character = {}
         await axiosInstance.get("/characters/"+id).then((response) => {  
-            var character = response.data['data']                  
+            character = response.data['data']                  
             
             const attributes = {...character.attributes}
 
@@ -53,11 +50,12 @@ const CharacterDetail = () =>{
             setCharacter(character)                                 
         });
 
+        await getCharacterImageUrl(character)
     }
 
     React.useEffect(() => {
       getCharacter()
-      getCharacterImageUrl()
+      
       console.log("loaded character")
     },[])
 
@@ -74,11 +72,16 @@ const CharacterDetail = () =>{
       });
 
     const handleImageUpload = (e) =>{
+   
+        if(!user){
+            toast.error(<div>Not authorized: <br/> Log In to upload an image for the character!</div>)
+            return;
+        }
         const file = e.target.files[0];
         uploadToFirebase(file)
     }
     
-    const uploadToFirebase = (file) => {
+    const uploadToFirebase = (file) => {      
         const imageRef = refStorage(storage,`images/${file.name}`);
                 
         uploadBytes(imageRef, file)
@@ -89,11 +92,11 @@ const CharacterDetail = () =>{
               saveUrlToFirebase(url);
             })
             .catch((error) => {
-                toast.error(error.message)
+                toast.error(<div>{error.message}</div>)
             });
         })
         .catch((error) => {
-          toast.error(error.message);
+            toast.error(<div>{error.message}</div>)
         });
     }
 
@@ -105,11 +108,11 @@ const CharacterDetail = () =>{
         setDB(refDB(database, 'characters/images/' + id), urlObj).then( () => {
             // Success.
          } ).catch( (error) => {
-           console.log(error);
+           toast.error(<div>{error.message}</div>)
          } );
     }
 
-    const getCharacterImageUrl = async () => {
+    const getCharacterImageUrl = async (characterF) => {
 
         const database = getDatabase();
         const ref = refDB(database, 'characters/images/' + id);
@@ -117,9 +120,14 @@ const CharacterDetail = () =>{
         onValue(ref, (snapshot) => {
             const data = snapshot.val();
             if( !!data ) {
-              setImageUrl(data.url)
-            } else {
-              console.log('Data not found');
+                setImageUrl(data.url)
+            } else {                
+                if(characterF.image != null){
+                    setImageUrl(characterF.image)
+                }
+                else{
+                    toast.warning(<div>No image found</div>)
+                }
             }  
           }, {
             onlyOnce: true
@@ -127,7 +135,8 @@ const CharacterDetail = () =>{
     }
 
     return(   
-        <div className="MainContainer">       
+        <div className="MainContainer">      
+            <ToastContainer /> 
             <NavBar pageName = {screenName}/>
             <div className="DetailPageContainer">               
                 <div className="BackButtonContainer">
@@ -137,7 +146,7 @@ const CharacterDetail = () =>{
                 </div>
                 <div className="CharacterImageContainer">
                     <img src={imageUrl} alt="CharacterImage" width="200px" height="200px"/>                                        
-                    <Button component="label" variant="contained" startIcon={<CloudUploadIcon />} sx={{marginLeft:"1%"}}>
+                    <Button disabled={user?false:true} component="label" variant="contained" startIcon={<CloudUploadIcon />} sx={{marginLeft:"1%"}}>
                         Upload file
                         <VisuallyHiddenInput type="file" accept="image/*" onChange={handleImageUpload}/>
                     </Button>

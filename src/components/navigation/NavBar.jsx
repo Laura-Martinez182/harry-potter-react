@@ -18,7 +18,6 @@ import { useDispatch, useSelector } from "react-redux";
 const NavBar = ({ pageName }) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [isDrawerOpen, setIsDrawerOpen] = React.useState(false);
-  //const [isUserLogged, setIsUserLogged] = React.useState(auth.currentUser != null);
 
   const navigate = useNavigate();
   const navigateToUrl = (url) => {
@@ -37,7 +36,6 @@ const NavBar = ({ pageName }) => {
     signOut(auth)
       .then(() => {
         dispatch(logout());
-        //setIsUserLogged(false)
         console.log("Signed out successfully");
         navigate("/login");
       })
@@ -49,7 +47,6 @@ const NavBar = ({ pageName }) => {
 
   const handleLogIn = () => {
     handleClose();
-    //setIsUserLogged(true);
     navigateToUrl("/login");
     console.log("Handle LogIn");
   };
