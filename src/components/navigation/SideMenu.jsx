@@ -21,7 +21,7 @@ export default function SideMenu({isDrawerOpen, toggleDrawer, handleClick}) {
     };
 
     const pagesUrlDict = {
-        "Home":"/home",
+        "Home":"/",
         "Movies":"/movies",
         "Characters":"/characters",
         "Potions":"/potions"

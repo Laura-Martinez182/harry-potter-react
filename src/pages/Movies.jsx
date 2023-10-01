@@ -44,10 +44,11 @@ const Movies = () =>{
     }
 
     React.useEffect(() =>{
-        //getMovies()        
+        getMovies()        
         console.log("Loaded movies")
     });
 
+    //Params contains the information of the row
     const showDetail = (params) => {
         const movieId = params.id
         navigateToUrl('/movies/' + movieId)
