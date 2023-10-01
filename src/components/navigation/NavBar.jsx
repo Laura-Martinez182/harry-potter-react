@@ -12,11 +12,13 @@ import SideMenu from "./SideMenu";
 import { useNavigate } from "react-router-dom";
 import { signOut } from "firebase/auth";
 import { auth } from "../../auth/firebase";
+import { logout, selectPerson } from "../../redux/reducers/PersonSlice";
+import { useDispatch, useSelector } from "react-redux";
 
 const NavBar = ({ pageName }) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [isDrawerOpen, setIsDrawerOpen] = React.useState(false);
-  const [isUserLogged, setIsUserLogged] = React.useState(auth.currentUser != null);
+  //const [isUserLogged, setIsUserLogged] = React.useState(auth.currentUser != null);
 
   const navigate = useNavigate();
   const navigateToUrl = (url) => {
@@ -28,27 +30,26 @@ const NavBar = ({ pageName }) => {
   const handleMenu = (event) => setAnchorEl(event.currentTarget);
 
   const handleClose = () => setAnchorEl(null);
+  const dispatch = useDispatch();
+  const user = useSelector(selectPerson);
 
   const handleLogOut = () => {
     signOut(auth)
       .then(() => {
-        setIsUserLogged(false)
-        navigate("/login");
+        dispatch(logout());
+        //setIsUserLogged(false)
         console.log("Signed out successfully");
+        navigate("/login");
       })
       .catch((error) => {
         console.log(error);
       });
-      handleClose();
+    handleClose();
   };
-  //   handleClose()
-  //   setIsUserLogged(false)
-  //   console.log("Handle LogOut")
-  // }
 
   const handleLogIn = () => {
     handleClose();
-    setIsUserLogged(true);
+    //setIsUserLogged(true);
     navigateToUrl("/login");
     console.log("Handle LogIn");
   };
@@ -101,10 +102,9 @@ const NavBar = ({ pageName }) => {
                 open={Boolean(anchorEl)}
                 onClose={handleClose}
               >
-                {isUserLogged && (
+                {user ? (
                   <MenuItem onClick={() => handleLogOut()}>Log out</MenuItem>
-                )}
-                {!isUserLogged && (
+                ) : (
                   <MenuItem onClick={() => handleLogIn()}>Log In</MenuItem>
                 )}
               </Menu>
