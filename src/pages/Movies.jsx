@@ -12,13 +12,13 @@ const Movies = () =>{
     const navigateToUrl = (url) => {navigate(url);}
 
     const columns = [
-        { field: 'title', headerName: 'Title', flex:1},          
-        { field: 'release_date',headerName:'Release Date', flex:0.5},       
-        { field: 'running_time',headerName:'Running Time', flex:0.5},
-        { field: 'budget',headerName:'Budget', flex:0.8},  
-        { field: 'box_office',headerName:'Box Office', flex:0.5},
-        { field: 'directors',headerName:'Directors', flex:0.5}, 
-        { field: 'distributors',headerName:'Distributors', flex:1},
+        { field: 'title', headerName: 'Title', flex:0.7, headerAlign: 'center'},          
+        { field: 'release_date',headerName:'Release Date', flex:0.7, headerAlign: 'center'},       
+        { field: 'running_time',headerName:'Running Time', flex:0.7, headerAlign: 'center'},
+        { field: 'budget',headerName:'Budget', flex:0.7, headerAlign: 'center'},  
+        { field: 'box_office',headerName:'Box Office', flex:0.7, headerAlign: 'center'},
+        { field: 'directors',headerName:'Directors', flex:0.7, headerAlign: 'center'}, 
+        { field: 'distributors',headerName:'Distributors', flex:0.7, headerAlign: 'center'},
       ];
 
     const getMovies = async () =>{

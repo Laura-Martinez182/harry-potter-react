@@ -12,7 +12,7 @@ import { Link } from "react-router-dom";
 const CardComponent = ({ img, title, content, to }) => {
   return (
     <Link to={to}>
-      <Card sx={{ width: 350 }} fullHeight>
+      <Card sx={{ width: 350 }}>
         <CardActionArea>
           <CardMedia component="img" height="150" image={img} />
           <CardContent>

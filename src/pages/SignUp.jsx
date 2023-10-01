@@ -1,11 +1,9 @@
 import { useState } from "react";
 import {
-  Alert,
   Box,
   Button,
   Card,
   Divider,
-  Snackbar,
   TextField,
   Typography,
 } from "@mui/material";
@@ -26,12 +24,12 @@ const SignUp = () => {
     await createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         const user = userCredential.user;
-        alert("Account created")
+        alert("Account created");
         console.log(user);
         navigate("/login");
       })
       .catch((error) => {
-        alert("Error creating the account. Please try again")
+        alert("Error creating the account. " + error.message);
         const errorCode = error.code;
         const errorMessage = error.message;
         console.log(errorCode, errorMessage);
@@ -43,7 +41,6 @@ const SignUp = () => {
       <Box
         component="form"
         borderRadius="lg"
-        coloredShadow="info"
         pt={5}
         pb={5}
         px={5}

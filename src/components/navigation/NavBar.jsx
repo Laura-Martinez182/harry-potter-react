@@ -41,8 +41,8 @@ const NavBar = ({pageName}) =>{
   return (
     <nav>
     <SideMenu isDrawerOpen={isDrawerOpen} toggleDrawer={toggleDrawer} handleClick={navigateToUrl}/>
-    <Box sx={{ flexGrow: 1, height:"6%"}}>
-      <AppBar position="absolute" color='primary' sx={{height:"6%"}}>
+    <Box sx={{ flexGrow: 1, height:"8%"}}>
+      <AppBar position="absolute" color='primary' sx={{height:"8%"}}>
         <Toolbar>
           <IconButton size="large" edge="start" color="inherit" aria-label="menu" onClick={() => toggleDrawer(true)}>
             <MenuIcon />
