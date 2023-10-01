@@ -6,6 +6,7 @@ import Characters from "../pages/Characters";
 import Potions from "../pages/Potions";
 import SignUp from "../pages/SignUp";
 import MovieDetail from "../pages/MovieDetail";
+import PotionDetail from "../pages/PotionDetail";
 
 
 const Router = () => (
@@ -18,6 +19,7 @@ const Router = () => (
             <Route path="/movies" element={<Movies/>}/>
             <Route path="/movies/:id" element={<MovieDetail/>}/>
             <Route path="/potions" element={<Potions/>}/>
+            <Route exact path="/potions/:id" element={<PotionDetail/>}/>
         </Routes>
     </BrowserRouter>
 )    
