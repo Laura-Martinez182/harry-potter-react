@@ -5,6 +5,7 @@ import Movies from "../pages/Movies";
 import Characters from "../pages/Characters";
 import Potions from "../pages/Potions";
 import SignUp from "../pages/SignUp";
+import MovieDetail from "../pages/MovieDetail";
 
 
 const Router = () => (
@@ -15,6 +16,7 @@ const Router = () => (
             <Route path="/" element={<Home/>}/>
             <Route path="/characters" element={<Characters/>}/>
             <Route path="/movies" element={<Movies/>}/>
+            <Route exact path="/movies/:id" element={<MovieDetail/>}/>
             <Route path="/potions" element={<Potions/>}/>
         </Routes>
     </BrowserRouter>

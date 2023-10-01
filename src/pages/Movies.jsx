@@ -2,11 +2,14 @@ import React from "react";
 import PageContentContainer from "../components/PageContentContainer"
 import NavBar from "../components/navigation/NavBar"
 import axiosInstance from "../config/axios";
+import { useNavigate } from "react-router-dom";
 
 const Movies = () =>{
 
-    const [getRows,setRows] = React.useState([])
+    const [getRows,setRows] = React.useState([{id:"whaatasdtasd",title:"This a title"}])
     const screenName = "Movies"
+    const navigate = useNavigate()
+    const navigateToUrl = (url) => {navigate(url);}
 
     const columns = [
         { field: 'title', headerName: 'Title', flex:1},          
@@ -41,13 +44,19 @@ const Movies = () =>{
     }
 
     React.useEffect(() =>{
-        getMovies()
+        //getMovies()        
+        console.log("Loaded movies")
     });
+
+    const showDetail = (params) => {
+        const movieId = params.id
+        navigateToUrl('/movies/' + movieId)
+    }
 
     return(
         <div className="MainContainer">
             <NavBar pageName = {screenName}/>
-            <PageContentContainer columns={columns} rows={getRows} pageName={screenName + " list"}></PageContentContainer>
+            <PageContentContainer columns={columns} rows={getRows} pageName={screenName + " list"} onRowClicked={showDetail}></PageContentContainer>
         </div>        
     )
 }

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { DataGrid } from '@mui/x-data-grid';
 
-export default function DataTable({rows,columns}) {
+export default function DataTable({rows,columns,rowClicked}) {
   return (
     <DataGrid
         rows={rows}
@@ -12,6 +12,8 @@ export default function DataTable({rows,columns}) {
           },
         }}
         pageSizeOptions={[5,10,15,20]}
+        onRowClick={rowClicked}
+        
       />    
   );
 }
