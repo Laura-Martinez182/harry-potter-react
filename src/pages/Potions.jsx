@@ -3,10 +3,11 @@ import PageContentContainer from "../components/PageContentContainer"
 import NavBar from "../components/navigation/NavBar"
 import axiosInstance from "../config/axios";
 import { useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
 
 const Potions = () => {
   const [getRows, setRows] = React.useState([
-    { id: "test", name: "This a name" },
+    { id: "", name:"" },
   ]);
   const screenName = "Potions";
   const navigate = useNavigate();
@@ -36,8 +37,12 @@ const Potions = () => {
         delete potions.attributes;
         return potions;
       });
-
       setRows(potions);
+    }).catch((error) => {
+      toast.error(<div>Wait, there are to many request</div>);
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      console.log(errorCode, errorMessage);
     });
   };
 
@@ -53,6 +58,7 @@ const Potions = () => {
 
   return (
     <div className="MainContainer">
+    <ToastContainer />
       <NavBar pageName={screenName} />
       <PageContentContainer
         columns={columns}
