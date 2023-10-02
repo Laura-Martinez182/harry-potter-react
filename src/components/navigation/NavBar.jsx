@@ -58,8 +58,8 @@ const NavBar = ({ pageName }) => {
         toggleDrawer={toggleDrawer}
         handleClick={navigateToUrl}
       />
-      <Box sx={{ flexGrow: 1, height: "8%" }}>
-        <AppBar position="absolute" color="primary" sx={{ height: "8%" }}>
+      <Box sx={{ flexGrow: 1, height: "8%"}}>
+        <AppBar position="absolute" sx={{ height: "8%",  backgroundColor: "#740001" }}>
           <Toolbar>
             <IconButton
               size="large"

@@ -7,7 +7,7 @@ export default function DataTable({ rows, columns, rowClicked }) {
       sx={{
         boxShadow: 2,
         border: 2,
-        borderColor: "primary.light"
+        borderColor: "#ae0001"
       }}
       rows={rows}
       columns={columns}

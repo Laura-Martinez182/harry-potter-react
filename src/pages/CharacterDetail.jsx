@@ -11,7 +11,7 @@ import { storage } from "../auth/firebase";
 import { database } from "../auth/firebase";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { logout, selectPerson } from "../redux/reducers/PersonSlice";
+import { selectPerson } from "../redux/reducers/PersonSlice";
 import { getDownloadURL, ref as refStorage,uploadBytes} from "firebase/storage";
 import { getDatabase, ref as refDB, set as setDB, onValue } from "firebase/database";
 import { useSelector } from "react-redux";
@@ -140,13 +140,13 @@ const CharacterDetail = () =>{
             <NavBar pageName = {screenName}/>
             <div className="DetailPageContainer">               
                 <div className="BackButtonContainer">
-                    <Button onClick={goBack} component="label" variant="contained" startIcon={<ArrowBackIcon />} sx={{margin:"1%"}}>
+                    <Button onClick={goBack} component="label" variant="contained" startIcon={<ArrowBackIcon />} sx={{margin:"1%", backgroundColor: "#d3a625", '&:hover': {backgroundColor: "#eeba30"}}}>
                         Back to characters
                     </Button>
                 </div>
                 <div className="CharacterImageContainer">
                     <img src={imageUrl} alt="CharacterImage" width="200px" height="200px"/>                                        
-                    <Button disabled={user?false:true} component="label" variant="contained" startIcon={<CloudUploadIcon />} sx={{marginLeft:"1%"}}>
+                    <Button disabled={user?false:true} component="label" variant="contained" startIcon={<CloudUploadIcon />} sx={{marginTop:"3%", backgroundColor: "#ae0001", '&:hover': {backgroundColor: "#740001"}}}>
                         Upload file
                         <VisuallyHiddenInput type="file" accept="image/*" onChange={handleImageUpload}/>
                     </Button>

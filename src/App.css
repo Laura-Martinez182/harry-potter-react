@@ -2,6 +2,7 @@
   margin: 0 auto;
   text-align: center;
   position: absolute;
+  background-color: whitesmoke;
   height: 100%;
   width: 100%;  
 }
@@ -14,6 +15,23 @@
 
 nav{
   height: 8%;
+}
+
+.login-container {
+  background-image: url("./assets/bg.jpg");
+  background-size: cover;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+
+}
+
+.sign-container {
+  background-image: url("./assets/signBg.jpg");
+  background-size: cover;
+  position: absolute;
+  height: 100%;
+  width: 100%;
 }
 
 .PageContentContainer{
@@ -46,8 +64,9 @@ nav{
 }
 
 .CharacterImageContainer{
-  display: flex;
-  align-items: center;
+  display: grid;
+  align-items: end;
+  justify-content: center;
   margin:1%
 }
 

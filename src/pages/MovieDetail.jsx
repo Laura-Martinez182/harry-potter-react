@@ -51,7 +51,7 @@ const MovieDetail = () =>{
             <NavBar pageName = {screenName}/>
             <div className="DetailPageContainer">                
                 <div className="BackButtonContainer">
-                    <Button onClick={goBack} component="label" variant="contained" startIcon={<ArrowBackIcon />} sx={{margin:"1%"}}>
+                    <Button onClick={goBack} component="label" variant="contained" startIcon={<ArrowBackIcon />} sx={{margin:"1%", backgroundColor: "#d3a625", '&:hover': {backgroundColor: "#eeba30"}}}>
                         Back to movies
                     </Button>
                 </div>

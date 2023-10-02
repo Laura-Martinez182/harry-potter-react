@@ -29,7 +29,7 @@ export default function DetailDataContainer({object}) {
   }
 
   return (
-    <TableContainer component={Paper} sx={{width:"98%", height:"100%", marginLeft:"1%", marginRight:"1%"}}>
+    <TableContainer component={Paper} fullHeight sx={{width:"98%", marginLeft:"1%", marginRight:"1%"}}>
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead>
           <TableRow>
